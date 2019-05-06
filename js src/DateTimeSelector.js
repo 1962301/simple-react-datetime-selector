@@ -66,22 +66,20 @@ export default class DateTimeSelector extends React.Component{
 		if((e.keyCode>=48&&e.keyCode<=57)||(e.keyCode>=96&&e.keyCode<=105)){
 		}
 		else if(e.keyCode===37||e.keyCode===38||e.keyCode===39||e.keyCode===40||e.keyCode===8){
-
 		}
 		else e.preventDefault();
 	}
 	
 	onBlur=(e)=>{
-		if(e.target.id!=="millisecond"&&e.target.value.length<2){
-			this.tempDateTime[e.target.id]=Array(3-e.target.value.length).join("0")+e.target.value;
-		}
-		else if(e.target.id==="millisecond"&&e.target.value.length<3){
-			this.tempDateTime[e.target.id]=Array(4-e.target.value.length).join("0")+e.target.value;	
-		}
+		this.padZero(e.target.id,e.target.value,e.target.id==="millisecond"?4:3);
 		this.active=false;
 		this.updateDateTime(this.getDateTime());
-		
 	}
+
+	padZero(id,value,n){
+		this.tempDateTime[id]=Array(n-value.length).join("0")+value;
+	}
+
 
 	handleArrowMouseDown=(e)=>{
 		e.preventDefault();
@@ -101,14 +99,12 @@ export default class DateTimeSelector extends React.Component{
 	}
 
 	validTimeValue(id,value){
-		if(parseInt(value)<0) value="0";
-		if("hourminutesecond".match(id)){
-			if(value.length>=3)							value=value.slice(0,2);
-			if(id!=="hour"&&parseInt(value)>59)			value="59";
-			else if(id==="hour"&&parseInt(value)>23) 	value="23";
-		}
-		else if(id==="millisecond"){	
-			if(value.length>3)							value=value.slice(0,3);
+		if(id!=="date"){
+			let i=parseInt(value);
+			if(i<0) value="0";
+			else if(id==="hour")						value=i>23?"23":i.toString();
+			else if(id==="second"||id==="minute")		value=i>59?"59":i.toString();
+			else if(id==="millisecond")					value=i>999?"999":i.toString();
 		}
 		return value;	
 	}
