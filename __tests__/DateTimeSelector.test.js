@@ -14,7 +14,6 @@ afterEach(()=> restore());
 describe('<DateTimeSelector/>', () => {
   it('should render with no error', () => {
     expect(wrapper).not.toBe(null);
-    console.log(wrapper.find('input').at(0).props());
   });
 
   it('should have 5 inputs',()=>{
@@ -44,25 +43,25 @@ describe('<DateTimeSelector/>', () => {
   });
 
   it('check time limit by clicking time Arrow and blur event',()=>{
-  	console.log("active="+instance.active);
+  	var mockClick=function(item,name){
+  		for(let i=0;i<(item==="millisecond"?1000:60);i++){
+  			wrapper.find(name).simulate('click');
+  		}
+  	};
+
   	["hour","second","minute","millisecond"].map((item)=>{
   		wrapper.find("#"+item).simulate('focus');
   		expect(instance.active).toBeTruthy();
   		expect(instance.activeID).toBe(item);
 
-  		for(let i=0;i<(item==="millisecond"?1000:60);i++){
-  			wrapper.find("#timeArrowTop").simulate('click');
-  		}
+  		mockClick(item,"#timeArrowTop");
   		expect(instance.tempDateTime[item]).toBe(item==="hour"?"23":item==="millisecond"?"999":"59");
 
-  		for(let i=0;i<(item==="millisecond"?1000:60);i++){
-  			wrapper.find("#timeArrowBottom").simulate('click');
-  		}
+  		mockClick(item,"#timeArrowBottom");
   		expect(Number(instance.tempDateTime[item])).toBe(0);
   		
   		wrapper.find("#"+item).simulate('blur');
   		expect(instance.active).toBeFalsy();
-
   		expect(instance.tempDateTime[item]).toBe(item==="millisecond"?"000":"00");
 
   	});

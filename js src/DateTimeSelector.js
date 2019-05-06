@@ -101,10 +101,9 @@ export default class DateTimeSelector extends React.Component{
 	validTimeValue(id,value){
 		if(id!=="date"){
 			let i=parseInt(value);
+			let limit=999*(id=="millisecond")+59*(id=="second"||id=="minute")+23*(id==="hour");
 			if(i<0) value="0";
-			else if(id==="hour")						value=i>23?"23":i.toString();
-			else if(id==="second"||id==="minute")		value=i>59?"59":i.toString();
-			else if(id==="millisecond")					value=i>999?"999":i.toString();
+			else	value=(i>limit?limit:i).toString();
 		}
 		return value;	
 	}
