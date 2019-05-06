@@ -1,0 +1,60 @@
+{
+  "name": "reactjs-datetimepicker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "server": "webpack-dev-server --colors --hot"
+  },
+  "author": "cc196",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.4.4",
+    "@babel/plugin-proposal-class-properties": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
+    "@babel/preset-react": "^7.0.0",
+    "babel-jest": "^24.7.1",
+    "babel-loader": "^8.0.5",
+    "css-loader": "^2.1.1",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.12.1",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^24.7.1",
+    "jsdom": "^15.0.0",
+    "react-test-renderer": "^16.8.6",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.30.0",
+    "webpack-cli": "^3.3.1"
+  },
+  "dependencies": {
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "webpack-dev-server": "^3.3.1"
+  },
+  "jest": {
+    "testRegex": "__tests__/.*\\.(test|spec)\\.js$",
+    "verbose": true,
+    "setupFiles": [
+      "./__testconfig/enzymeConfig.js"
+    ],
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      "\\.(css|less)$": "identity-obj-proxy"
+    },
+    "moduleDirectories": [
+      "node_modules"
+    ],
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "js src/*.{js,jsx}",
+      "!**/node_modules/**"
+    ],
+    "transform": {
+      "^.+\\.js$": "babel-jest"
+    },
+    "coverageDirectory": "coverages"
+  }
+}
