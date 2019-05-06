@@ -1,0 +1,142 @@
+.datetimeFieldSet{
+	border:none;
+	margin:none;
+	padding:none;
+}
+.input:disabled{
+	background: rgba(0, 0, 0, 0.05);
+}
+
+.date{
+	padding:0px;
+	padding-left:5px;
+	margin:0 10px 0 0;
+	width:100px;
+	font-family: Arial;
+}
+.date::-webkit-inner-spin-button, .date::-webkit-clear-button{ 
+	display: none; 
+}
+
+.hour,.date{
+	background:#FFFFFF;
+	background:-webkit-linear-gradient(bottom, #F5F5F5 0%, #FFF 25%, #FFF 75%, #F5F5F5 100%);
+	background:-o-linear-gradient(bottom, #F5F5F5 0%, #FFF 25%, #FFF 75%, #F5F5F5 100%);
+	background:linear-gradient(to top, #F5F5F5 0%, #FFF 25%, #FFF 75%, #F5F5F5 100%);
+	border:1px solid #EDEDED;
+	box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.2);
+	box-sizing:border-box;
+	z-index:0;
+}
+
+.timeOuterDiv{
+	display:inline-block;
+	height:19px;
+	width:110px;
+	position:relative;
+	padding:0px;
+	margin:0px;
+	z-index:0;
+	top:5px;
+}
+
+.timeInput{
+	position:absolute;
+	top:0px;
+	right:0px;
+	height:100%;
+	margin:0px;
+	padding:0px;
+}
+
+.hour,.minute,.second,.millisecond:focus{
+	outline:none;
+}
+
+.hour{
+	padding-left: 5px;
+	width:100%;
+}
+.minute,.second,.millisecond{
+	background:transparent;
+	border:none;
+	padding-left:5px;
+	box-sizing:border-box;
+}
+.minute{
+	width:80%;
+	z-index: 1
+}
+.second{
+	width:60%;
+	z-index: 2
+}
+.millisecond{
+	width:40%;
+	z-index: 3
+}
+
+
+.timeArrowDiv{
+	z-index:4;
+	width:14px;
+	height:90%;
+	position:absolute;
+	top:5%;
+	right:0px;
+	background-color: #EDEDED
+}
+.timeArrowTop{
+	content:"";
+	border-style:solid;
+	border-color: #BCBCBC;
+	border-width:4px 6px 4px 6px;
+	border-left-color:transparent;
+	border-top-color: transparent;
+	border-right-color: transparent;
+	z-index:5;
+	position:absolute;
+	bottom:55%;
+	right:0px;
+	margin-left:1px;
+	margin-right:1px;
+}
+.timeArrowBottom{
+	content:"";
+	border-style:solid;
+	border-color: #BCBCBC;
+	border-width:4px 6px 4px 6px;
+	border-left-color:transparent;
+	border-bottom-color: transparent;
+	border-right-color: transparent;
+	z-index:5;
+	position:absolute;
+	top:55%;
+	right:0px;
+	margin-left:1px;
+	margin-right:1px;
+}
+.timeArrowTop:hover,.timeArrowBottom:hover{
+	background-color:#DBDBDB;
+}
+
+.timeColon1{
+	display: inline-block;
+	position:absolute;
+	top:0px;
+	right:76%;
+
+}
+.timeColon2{
+	display: inline-block;
+	position:absolute;
+	top:0px;
+	height:100%;
+	right:56%;
+}
+.timeDot{
+	display: inline-block;
+	position:absolute;
+	height:100%;
+	right:37%;
+}
